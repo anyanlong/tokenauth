@@ -10,8 +10,8 @@ import (
 
 //Customer error.
 type ValidationError struct {
-	Code string `json:"errcode"`
-	Msg  string `json:"errmsg"`
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
 }
 
 func (v ValidationError) Error() string {

@@ -198,6 +198,10 @@ func (store *BoltDBFileStore) SaveToken(token *Token) error {
 	})
 }
 
+func (store *BoltDBFileStore) FlushToken(token *Token) error {
+	return nil
+}
+
 //Get token info if find in store,or return error
 func (store *BoltDBFileStore) GetToken(tokenString string) (token *Token, err error) {
 	if len(tokenString) == 0 {
@@ -252,7 +256,8 @@ func (store *BoltDBFileStore) deleteToken(tokenString string, tx *bolt.Tx) error
 	tokenBytes := bk.Get(key)
 	// Not found
 	if tokenBytes == nil {
-		return errors.New("incompatible tokenString")
+		return nil
+		//return errors.New("incompatible tokenString")
 	}
 
 	err := bk.Delete(key)
@@ -376,5 +381,5 @@ func NewBoltDBFileStore() *BoltDBFileStore {
 }
 
 func init() {
-	RegStore("default", NewBoltDBFileStore())
+	RegStore("bolt", NewBoltDBFileStore())
 }

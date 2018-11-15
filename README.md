@@ -3,11 +3,11 @@
 
 # 安装
 
-`go get github.com/ysqi/tokenauth`
+`go get github.com/anyanlong/tokenauth`
 
 也可以通过`-u`参数来更新tokenauth 和所依赖的第三方包
 
-`go get -u github.com/ysqi/tokenauth`
+`go get -u github.com/anyanlong/tokenauth`
 
 # 功能
 
@@ -34,7 +34,7 @@ __单点登录__
 ```Go
 import (
 	"fmt"
-	"github.com/ysqi/tokenauth"
+	"github.com/anyanlong/tokenauth"
 )
 func main() {
 

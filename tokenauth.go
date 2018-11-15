@@ -137,10 +137,13 @@ func NewToken(a *Audience, tokenFunc GenerateTokenString) (*Token, error) {
 }
 
 // New Sign Token and this new token will be saved to store.
-func NewSingleToken(singleID string, a *Audience, tokenFunc GenerateTokenString) (*Token, error) {
+func NewSingleToken(singleID string, group string, info string, a *Audience, tokenFunc GenerateTokenString) (*Token, error) {
 	token := &Token{
+		ClientID: a.ID,
 		SingleID: singleID,
+		GroupID:  group,
 		Value:    tokenFunc(a),
+		BizInfo: info,
 		DeadLine: time.Now().Unix() + int64(a.TokenPeriod),
 	}
 	if err := Store.SaveToken(token); err != nil {
@@ -163,7 +166,7 @@ func ValidateToken(tokenString string) (*Token, error) {
 
 	// Get token info
 	if token, err = Store.GetToken(tokenString); err != nil {
-		return nil, err
+		return nil, ERR_TokenExpired
 	}
 
 	// Check token
@@ -183,7 +186,7 @@ func ValidateToken(tokenString string) (*Token, error) {
 }
 
 var (
-	ERR_InvalidateToken = ValidationError{Code: "40001", Msg: "Invalid token"}
-	ERR_TokenEmpty      = ValidationError{Code: "41001", Msg: "Token is empty"}
-	ERR_TokenExpired    = ValidationError{Code: "42001", Msg: "Token is expired"}
+	ERR_InvalidateToken = ValidationError{Code: 40001, Msg: "Invalid token"}
+	ERR_TokenEmpty      = ValidationError{Code: 41001, Msg: "Token is empty"}
+	ERR_TokenExpired    = ValidationError{Code: 42001, Msg: "Token is expired"}
 )

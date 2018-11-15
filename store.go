@@ -34,6 +34,10 @@ type TokenStore interface {
 	// Returns error if save token fail.
 	SaveToken(token *Token) error
 
+	// Flush token to token.
+	// Returns error if flush token fail.
+	FlushToken(token *Token) error
+
 	// Delete token info from store.
 	// Returns error if error occured during execution
 	DeleteToken(tokenString string) error

@@ -21,7 +21,9 @@ type Audience struct {
 type Token struct {
 	ClientID string // Audience.ID
 	SingleID string // Single Token ID
+	GroupID  string //	group id
 	Value    string // Token string
+	BizInfo  string // info for extre help
 	DeadLine int64  // Token Expiration date, time unix.
 }
 
