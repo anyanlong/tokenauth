@@ -5,7 +5,7 @@
 package tokenauth_test
 
 import (
-	"github.com/ysqi/tokenauth"
+	"github.com/anyanlong/tokenauth"
 	. "gopkg.in/check.v1"
 )
 

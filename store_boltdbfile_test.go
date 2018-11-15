@@ -6,7 +6,7 @@ package tokenauth_test
 
 import (
 	"fmt"
-	"github.com/ysqi/tokenauth"
+	"github.com/anyanlong/tokenauth"
 	. "gopkg.in/check.v1"
 	"sync"
 	"time"
