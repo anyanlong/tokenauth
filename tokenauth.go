@@ -6,7 +6,7 @@
 // Simple Usage.
 // 	import (
 // 		"fmt"
-// 		"github.com/ysqi/tokenauth"
+// 		"github.com/anyanlong/tokenauth"
 // 	)
 // 	func main() {
 //
@@ -143,7 +143,7 @@ func NewSingleToken(singleID string, group string, info string, a *Audience, tok
 		SingleID: singleID,
 		GroupID:  group,
 		Value:    tokenFunc(a),
-		BizInfo: info,
+		BizInfo:  info,
 		DeadLine: time.Now().Unix() + int64(a.TokenPeriod),
 	}
 	if err := Store.SaveToken(token); err != nil {
